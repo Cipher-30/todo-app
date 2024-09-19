@@ -1,0 +1,1 @@
+export const LOGO_URL = "https://cdn.worldvectorlogo.com/logos/iconfinder.svg";
