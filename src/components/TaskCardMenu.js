@@ -1,8 +1,8 @@
 import React from 'react'
 import { useDispatch, } from 'react-redux';
-import { addMarkAsDone, removeTask } from '../utils/sliceStore/taskSlice';
+import { addMarkAsDone, addPinUp, removeTask } from '../utils/sliceStore/taskSlice';
 
-const TaskCardMenu = ({cardId,markDone, setShowMenu}) => {
+const TaskCardMenu = ({cardId,markDone, setShowMenu, pinUp}) => {
 
    const dispatch = useDispatch();
 
@@ -12,15 +12,21 @@ const TaskCardMenu = ({cardId,markDone, setShowMenu}) => {
    }
    
    const markAsDone = () => {
+    //  setShowMenu(false);
     dispatch(addMarkAsDone(cardId));
-    setShowMenu(false);
+   }
+
+
+   const pinUpTask = () => {
+    // setShowMenu(false);
+    dispatch( addPinUp(cardId));
    }
 
   return (
     <div className= 'text-black '  >
         <ul className='flex flex-col'>
             <li className='hover:bg-blue-300 px-4 py-2' onClick={ () => { markAsDone()}}>{ markDone ? ("Mark As Undone"): ("Mark As done")}</li>
-            <li className='hover:bg-blue-300 px-4 py-2'>Pin up</li>
+            <li className='hover:bg-blue-300 px-4 py-2' onClick={pinUpTask}>{pinUp ? ("Pin Down") : ("Pin Up")}</li>
             <li  className='hover:bg-blue-300 px-4 py-2'
              onClick={ () => { deleteTask()}}
              >Delete</li>
@@ -29,4 +35,4 @@ const TaskCardMenu = ({cardId,markDone, setShowMenu}) => {
   )
 }
 
-export default TaskCardMenu
+export default TaskCardMenu 

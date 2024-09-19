@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { CiMenuKebab } from "react-icons/ci";
+import { BsFillPinAngleFill } from "react-icons/bs";
 import { GiAlarmClock } from "react-icons/gi";
 import { dateDiff, dateFormatConverter } from '../utils/miniFunction';
 import TaskCardMenu from './TaskCardMenu';
@@ -7,7 +8,7 @@ import TaskCardMenu from './TaskCardMenu';
 
 const TaskCard = ({ task }) => { 
 
-  const { taskName, taskDescription, creationTime, timeToAccomplish, taskCategory, taskId, markDone  } = task;
+  const { taskName, taskDescription, creationTime, timeToAccomplish, taskCategory, taskId, markDone , pinUp  } = task;
 
 
   const [showMore, setShowMore] = useState(false);
@@ -36,14 +37,16 @@ const TaskCard = ({ task }) => {
 
 
 
+
+
   return (
 
-    <section className={`' px-4 py-4   rounded-lg   border border-white ' ${markDone ? "line-through scale-90 " : " "}`}>
+    <section className={`' px-4 py-4   rounded-2xl transition-all duration-200   border border-white ' ${markDone ? "line-through scale-90 " : " "}   ${pinUp ? " bg-orange-600": " "  }`}>
 
 
-      <div className='w-full flex flex-wrap  justify-between'>
-        <h1 className={`'font-semibold text-xl' ${markDone ? "line-through" : " "}`}>{taskName} </h1>
-        <h1 ><span className='font-thin'>Today </span>{creationTime} </h1>
+      <div className='w-full flex flex-wrap  justify-between items-center'>
+        <h1 className={`'font-semibold font-bold text-xl ' ${markDone ? "line-through" : " "}`}>{taskName} </h1>
+        <h1 className='flex'>{pinUp && <span className='mr-2'> <BsFillPinAngleFill size={20} /></span>}<span className='font-thin mr-1'>Today </span> {creationTime} </h1>
       </div>
 
 
@@ -65,9 +68,9 @@ const TaskCard = ({ task }) => {
           }}><CiMenuKebab size={30}  />
           { showMenu && (<div
             ref={menuRef}
-            className='absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg p-2 z-10'
+            className='absolute -top-12 left-10 mt-2 w-48 bg-white border rounded shadow-lg p-2 z-10'
           >
-            <TaskCardMenu cardId={taskId}  setShowMenu={setShowMenu} markDone={ markDone}/>
+            <TaskCardMenu cardId={taskId}  pinUp={pinUp}  setShowMenu={setShowMenu} markDone={ markDone}/>
           </div>) }</span>
         </h1>
 
@@ -87,3 +90,6 @@ const TaskCard = ({ task }) => {
 }
 
 export default TaskCard
+
+
+//  className='absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg p-2 z-10'

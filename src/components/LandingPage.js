@@ -10,9 +10,9 @@ const LandingPage = () => {
     const task = useSelector((store) => (store.task.taskInfo));
 
     return (
-        <div className='relative mt-4 min-h-[calc(100vh-100px)] border-2 border-blue-800 flex flex-col items-center '>
+        <div className='relative mt-4 mx-2 sm:mx-0 sm:p-4 min-h-[calc(100vh-100px)] border rounded-md  border-gray-300 flex flex-col items-center '>
 
-            <section className='border w-full sm:w-[80%] flex flex-col justify-center gap-2 '>
+            <section className='  mt-4 w-full sm:w-[90%] md:w-[80%] flex flex-col justify-center gap-4 '>
             {
               task.length > 0 ? (<TaskPage/>) : (<NoTaskPage/>)
             }

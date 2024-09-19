@@ -20,17 +20,17 @@ const CategoryOptions = ({onClick}) => {
 
   return (
     <div>
-       <select id='category' onChange={redirectHandler}  className='w-full px-4 py-2 rounded-md  bg-transparent border border-gray-400   '>
+       <select id='category' onChange={redirectHandler}  className='w-full px-4 py-2 rounded-md  bg-transparent border border-gray-400   cursor-pointer  '>
            
-          <optgroup label='Select category' className='text-black bg-[#7f7d7d] '>
+          <optgroup label='Select category' className='text-black py-2 bg-[#ffffff] '>
              {categoryOptions.map( (eachOption) => { return (<option  key={eachOption} value={eachOption} 
               className=''>{eachOption} </option>)})}
          </optgroup>  
 
       
          
-          <option value="modify"  className='text-black  py-4 ' >
-            Modify 
+          <option value="modify"  className='text-black border-2 border-black py-2 font-semibold bg-[rgb(106,227,161)] cursor-pointer' >
+            ADD CATEGORY 
           </option>
       
    
