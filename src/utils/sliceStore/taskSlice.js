@@ -18,6 +18,7 @@ const taskSlice = createSlice({
             //  },
         ],
         nextTaskId: 1,
+        taskAccomplised: 0,
     },
     reducers: {
 
@@ -63,28 +64,39 @@ const taskSlice = createSlice({
                     console.log(state.taskInfo.indexOf(eachTask));
 
                     if (eachTask.pinUp) {
-
                         eachTask.pinUp = false;
-
                     }
                     else {
-
                         eachTask.pinUp = true;
                         const index = state.taskInfo.indexOf(eachTask);
                         //DESTRUCTURING FROM ARRAY AS RETURNS A ARRAY
                         const [pinUpTask] = state.taskInfo.splice(index, 1);
-
                         state.taskInfo.unshift(pinUpTask);
-
                     }
-
-
-
                 }
             })
+        },
+          
+        calcTaskDone : (state, action) => { 
 
+            let totalTask =  state.taskInfo.length;
+            let taskComplete = 0;
 
+             state.taskInfo.forEach( (eachTask) => {
+                   if(eachTask.markDone === true)
+                   {
+                    taskComplete = taskComplete + 1;
+                   }
+                  
+             });
+
+             const taskPersent = Math.floor((taskComplete/totalTask)*100);
+             state.taskAccomplised = taskPersent;
+             
         }
+
+
+
 
 
 
@@ -102,5 +114,5 @@ const taskSlice = createSlice({
 });
 
 
-export const { addTask, removeTask, addMarkAsDone, addPinUp } = taskSlice.actions;
+export const { addTask, removeTask, addMarkAsDone, addPinUp, calcTaskDone } = taskSlice.actions;
 export default taskSlice.reducer;

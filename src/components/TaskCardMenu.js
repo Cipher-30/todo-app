@@ -1,10 +1,12 @@
-import React from 'react'
+
 import { useDispatch, } from 'react-redux';
 import { addMarkAsDone, addPinUp, removeTask } from '../utils/sliceStore/taskSlice';
 
 const TaskCardMenu = ({cardId,markDone, setShowMenu, pinUp}) => {
 
    const dispatch = useDispatch();
+
+
 
 
    const deleteTask =  () => {

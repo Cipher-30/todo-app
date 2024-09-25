@@ -4,6 +4,7 @@ import { IoIosAddCircle } from "react-icons/io";
 import { useSelector } from 'react-redux';
 import NoTaskPage from './miniComponents/NoTaskPage';
 import TaskPage from './TaskPage';
+import TaskCompletionBar from './TaskCompletionBar';
 
 const LandingPage = () => {
 
@@ -12,9 +13,9 @@ const LandingPage = () => {
     return (
         <div className='relative mt-4 mx-2 sm:mx-0 sm:p-4 min-h-[calc(100vh-100px)] border rounded-md  border-gray-300 flex flex-col items-center '>
 
-            <section className='  mt-4 w-full sm:w-[90%] md:w-[80%] flex flex-col justify-center gap-4 '>
+            <section className=' sm:mx-0 mx-2   w-full sm:w-[90%] md:w-[80%] flex flex-col justify-center gap-4 '>
             {
-              task.length > 0 ? (<TaskPage/>) : (<NoTaskPage/>)
+              task.length > 0 ? (<> <TaskCompletionBar/><TaskPage/></>) : (<NoTaskPage/>)
             }
             </section>
 

@@ -4,16 +4,28 @@ import { BsFillPinAngleFill } from "react-icons/bs";
 import { GiAlarmClock } from "react-icons/gi";
 import { dateDiff, dateFormatConverter } from '../utils/miniFunction';
 import TaskCardMenu from './TaskCardMenu';
+import { useDispatch } from 'react-redux';
+import { calcTaskDone } from '../utils/sliceStore/taskSlice';
 
 
 const TaskCard = ({ task }) => { 
 
   const { taskName, taskDescription, creationTime, timeToAccomplish, taskCategory, taskId, markDone , pinUp  } = task;
 
+   const dispatch = useDispatch();
 
   const [showMore, setShowMore] = useState(false);
   const [showMenu, setShowMenu]  = useState(false);
   const menuRef = useRef(null);
+
+
+
+  useEffect( () => {
+    
+    console.log("task changed!!!!!!");
+    dispatch(calcTaskDone());
+    
+  }, [markDone])
 
 
 
