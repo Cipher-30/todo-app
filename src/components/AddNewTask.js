@@ -5,7 +5,7 @@ import TaskForm from './TaskForm'
 const AddNewTask = () => {
   return (
     <div className=' min-h-screen bg-black text-white' >
-      <section className='w-[80%] mx-auto'>
+      <section className='w-[100%]  sm:w-[70%]  mx-auto'>
       <Header>
         Add New Task
         </Header>
